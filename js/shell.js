@@ -34,11 +34,20 @@ commands = {
 	github: [function() {
 		window.open("https://github.com/epskid", '_blank').focus()
 	}, "open github.com/epskid in a new tab"],
-	whoami: [function () {
+	whoami: [function() {
 		appendPrev("i'm epskid")
 		appendPrev("i do stuff with computers sometimes")
 		appendPrev("being anonymous on the internet requires that online descriptions must be as vague as possible")
-	}, "who am i?"]
+	}, "who am i?"],
+	neofetch: [function() {
+	 	appendPrev(
+`     ___     skid@ep
+    / _ \\    OS: epskidOS
+   |  __/    SHELL: shkid
+    \\___|    STATUS: epic
+   
+`)
+	}, "mandatory command on unix systems"]
 }
 
 function runIt(raw) {
