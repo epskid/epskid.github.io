@@ -1,0 +1,58 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: fixedsys, monospace;
+}
+
+body {
+	opacity: 0;
+	white-space: pre;
+	color: lime;
+	text-shadow: 0 0 10px lime, 0 0 20px green, 0 0 30px green, 0 0 40px green;
+	background: black;
+	overflow-x: hidden;
+}
+
+body::after {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	content: "";
+	width: 100%;
+	height: 100%;
+	/* https://mbrserver.com */
+	background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+	background-size: 100% 2px, 3px 100%;
+	pointer-events: none;
+}
+
+#scanline {
+	color: darkgreen;
+	animation: scanline 9s linear infinite;
+}
+
+@keyframes scanline {
+	from {
+		transform: translateY(0);
+	}
+
+	to {
+		transform: translateY(100vh);
+	}
+}
+
+/* https://mbrserver.com */
+@keyframes flicker { 0% { opacity: 0.119; } 5% { opacity: 0.02841; } 10% { opacity: 0.35748; } 15% { opacity: 0.88852; } 20% { opacity: 0.9408; } 25% { opacity: 0.35088; } 30% { opacity: 0.22426; } 35% { opacity: 0.26418; } 40% { opacity: 0.09249; } 45% { opacity: 0.35312; } 50% { opacity: 0.89436; } 55% { opacity: 0.9574; } 60% { opacity: 0.19754; } 65% { opacity: 0.05086; } 70% { opacity: 0.12137; } 75% { opacity: 0.75791; } 80% { opacity: 0.89617; } 85% { opacity: 0.90183; } 90% { opacity: 0.20657; } 95% { opacity: 0.64125; } 100% { opacity: 0.78042; }}
+
+#shell-input {
+	border: none;
+	outline: none;
+	background: none;
+	font-size: inherit;
+	text-shadow: 0 0 10px lime;
+	color: inherit;
+	font-family: inherit;
+	width: 100%;
+}
