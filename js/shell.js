@@ -3,13 +3,18 @@ const shell = document.createElement("div")
 const prev = document.createElement("div")
 shell.appendChild(prev)
 
+const promptLine = document.createElement("div")
+promptLine.id = "prompt-line"
+
 const shellPrompt = document.createElement("span")
 shellPrompt.innerText = "$ "
-shell.appendChild(shellPrompt)
+promptLine.appendChild(shellPrompt)
 
 const input = document.createElement("input")
 input.id = "shell-input"
-shell.appendChild(input)
+promptLine.appendChild(input)
+
+shell.appendChild(promptLine)
 
 input.onkeyup = ev => {
 	if (ev.keyCode === 13) {
@@ -19,6 +24,7 @@ input.onkeyup = ev => {
 		runIt(raw)
 		input.value = ""
 		input.style.display = "initial"
+		input.scrollIntoView({ block: "end" })
 	}
 }
 
@@ -31,6 +37,10 @@ commands = {
 			appendPrev(` * ${command} -- ${value[1]}`)
 		}
 	}, "get help"],
+	clear: [function() {
+		welcome.innerText = ""
+		prev.innerText = ""
+	}, "clear the screen"],
 	github: [function() {
 		window.open("https://github.com/epskid", '_blank').focus()
 	}, "open github.com/epskid in a new tab"],
@@ -41,7 +51,7 @@ commands = {
 	}, "who am i?"],
 	neofetch: [function() {
 	 	appendPrev(
-`     ___     skid@ep
+`     ___     epskid@browser
     / _ \\    OS: epskidOS
    |  __/    SHELL: shkid
     \\___|    STATUS: epic
@@ -53,6 +63,9 @@ commands = {
 function runIt(raw) {
 	const lexed = raw.split(/[ \t]+/);
 	const command = lexed[0]
+	if (command === "") {
+		return;
+	}
 	const args = lexed.slice(1)
 
 	if (command in commands) {
@@ -78,7 +91,7 @@ function loadShell() {
 	window.onfocus = _ => { input.focus() }
 	window.onclick = _ => { input.focus() }
 	setTimeout(_ => {
-		appendPrev("welcome to shkid!")
+		appendPrev("shkid initialized")
 		appendPrev("type `help` for help")
 	}, 100)
 }

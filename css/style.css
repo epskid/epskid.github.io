@@ -8,9 +8,8 @@ body {
 	opacity: 0;
 	white-space: pre;
 	color: lime;
-	text-shadow: 0 0 10px lime, 0 0 20px green, 0 0 30px green, 0 0 40px green;
 	background: black;
-	overflow-x: hidden;
+	text-shadow: 0 0 10px lime, 0 0 20px green, 0 0 30px green, 0 0 40px green;
 }
 
 body::after {
@@ -55,4 +54,9 @@ body::after {
 	color: inherit;
 	font-family: inherit;
 	width: 100%;
+}
+
+#prompt-line {
+	display: flex;
+	flex-direction: row;
 }
