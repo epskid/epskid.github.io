@@ -60,7 +60,8 @@ commands = {
   }, "mandatory command on unix systems"],
   project: [function(project) {
     const projects = {
-      pie: "a python \"ide\""
+      pie: "a python \"ide\"",
+      zorting: "a sorting algorithm visualizer",
     }
 
     if (project === "list") {
